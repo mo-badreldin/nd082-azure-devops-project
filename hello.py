@@ -7,4 +7,4 @@ def add(x):
 
 
 def subtract(x):
-    return x - 
+    return x - 1
