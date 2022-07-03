@@ -1,17 +1,22 @@
 # Overview
+This project shows the steps on how to build a CI pipeline using Github actions and a CI/CD pipeline using Azure Devops.
+## Part 1
+Use a HelloWorld python script and test script to demonstrate using Github actions for CI
 
-<TODO: complete this with an overview of your project>
+## Part 2
+Deploy a Pyhon ML Flask Application to Azure App Services through Azure a CI/CD pipeline
+
 
 ## Project Plan
-<TODO: Project Plan
-
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* [Trello board for the project tasks](https://trello.com/b/XvIAQub8/nd-ci-cd-project)
+* [Spreadsheet for project plan](https://docs.google.com/spreadsheets/d/1zbUaBiTaXJB7IBoyU8Xqysn9V-tIMATd08ThGbKKnaE/edit?usp=sharing)
 
 ## Instructions
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+### CI Architectural Diagram
+![CI_Arch_Diagram](/images/ci-diagram.png)
+### CI Architectural Diagram
+![CD_Arch_Diagram](/images/cd-diagram.png)
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
 
