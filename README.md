@@ -19,9 +19,6 @@ Deploy a Pyhon ML Flask Application to Azure App Services through Azure a CI/CD 
 ![CD_Arch_Diagram](/images/cd-diagram.png)
 
 ### Setup Environment
-
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
-
 1) Setup Azure Cloud Shell
 ![AzureShell](/images/Start-Azure-Cloud-Shell.png)
 
@@ -53,34 +50,46 @@ Deploy a Pyhon ML Flask Application to Azure App Services through Azure a CI/CD 
     ![Github_Actions](/images/Github_Actions.png)
 
 
-### CD using Azure Pipeline
+### WebApp using Azure App Services
+1) Navigate to project root directory
 
+2) Deploy a new Azure webapp (Detailed Info in [Microsoft Docs](https://docs.microsoft.com/en-us/azure/app-service/quickstart-python?tabs=flask%2Cwindows%2Cazure-cli%2Cvscode-deploy%2Cdeploy-instructions-azportal%2Cterminal-bash%2Cdeploy-instructions-zip-azcli))
+    * Setup a Python Virtual Environment ``` python3 -m venv ~/.azure-cd ``` from the root of the Azure Cloud Shell
+    * Run the virtual Environment ``` source ~/.azure-cd/bin/activate ```
+    * Run ``` make install ``` to install requirements
+    * Create an app service and deploy the app ``` az webapp up -n <app-name> -g <resource-group-name> -l <location> --sku B1 ```
+    * In Azure Portal, check the deployment of the app under App Services
+        ![CD_AppServices](/images/CD_AppServices.png) 
+    * Verify deployment by visiting URL ``` https://<app-name>.azurewebsites.net/ ```
+        ![CD_WebAppURL](/images/CD_WebAppURL.png)
 
+3) Perform Prediction
+    * Edit ``` ./make_predict_azure_app.sh ``` to update the name of app in ``` -X POST https://<yourappname>.azurewebsites.net:$PORT/predict ```
+    * Execute ``` ./make_predict_azure_app.sh ```
+    * If app is deployed and working correctly then you should get prediction result
+        ![CD_PredictionResult](/images/CD_PredictionResult.png)
 
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-
-* Output of a test run
-
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
-
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
-```
-
-* Output of streamed log files from deployed application
-
-> 
+### CD using Azure Pipeline (Detailed Info in [Microsoft Docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops&WT.mc_id=udacity_learn-wwl))  
+1) From Azure Portal navigate to Azure DevOps and create a new Azure DevOps project
+2) From project settings, set up a new service connection via Azure Resource Manager
+3) In Azure DevOps project, go to pipelines to create a new pipeline
+4) Choose where the soruce code is stored ***GitHub***
+5) Configure Pipeline to ***Python to Linux Web App on Azure***
+6) In Azure DevOps Project the pipeline should be deployed
+    ![CD_PipelineOverview](/images/CD_PipelineOverview.png)
+7) Inside the pipeline all previous run and their result is available
+    ![CD_PipelineRuns](/images/CD_PipelineRuns.png)
+8) Under each pipeline run, details of steps and result of each step could be seen
+    ![CD_PipelineDetails](/images/CD_PipelineDetails.png)
+9) Logs from the running application could be inspected under ``` https://<app-name>.scm.azurewebsites.net/api/logs/docker ```
+    ![CD_LogFiles](/images/CD_LogFiles.png)
+ 
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+* Migrate Source Code from Github to Azure DevOps repo system for easier integration of repos and pipelines
+* Use Azure pipelines instead of Github Actions for both CI and CD
+* Automate testing of successful deployment of webapp 
 
 ## Demo 
 
