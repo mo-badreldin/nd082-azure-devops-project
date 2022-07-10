@@ -4,3 +4,4 @@ numpy
 scikit-learn==0.20.3
 pylint
 pytest
+locust
