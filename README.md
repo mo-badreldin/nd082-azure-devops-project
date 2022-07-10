@@ -84,6 +84,8 @@ Deploy a Pyhon ML Flask Application to Azure App Services through Azure a CI/CD 
 9) Logs from the running application could be inspected under ``` https://<app-name>.scm.azurewebsites.net/api/logs/docker ```
     ![CD_LogFiles](/images/CD_LogFiles.png)
  
+### Locust Test
+![Locust_Test](/images/Locust_Test.png)
 
 ## Enhancements
 
