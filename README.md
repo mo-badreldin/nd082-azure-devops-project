@@ -95,3 +95,6 @@ Deploy a Pyhon ML Flask Application to Azure App Services through Azure a CI/CD 
 
 [Video Demo](https://youtu.be/gIgK68FxyJ0)
 
+## Github Action Badge
+
+[![Python application test with Github Actions](https://github.com/mo-badreldin/nd082-azure-devops-project/actions/workflows/pythonapp.yml/badge.svg?branch=main)](https://github.com/mo-badreldin/nd082-azure-devops-project/actions/workflows/pythonapp.yml)
