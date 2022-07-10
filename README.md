@@ -93,6 +93,5 @@ Deploy a Pyhon ML Flask Application to Azure App Services through Azure a CI/CD 
 
 ## Demo 
 
-<TODO: Add link Screencast on YouTube>
-
+[Video Demo](https://youtu.be/gIgK68FxyJ0)
 
